@@ -149,7 +149,7 @@ class TrimTrailingWhitespaceBeforeSavingPlugin(GObject.Object, Gedit.ViewActivat
             language_id = language.get_id()
             # Make sure that this is not a patch file before trimming trailing whitespace.
             # Trimming trailing whitespace in a patch file can cause conflicts.
-            if language_id != "diff":
+            if language_id != "diff" and language_id != "markdown":
                 doc.current_line_trailing_whitespace = current_line_trailing_whitespace
                 self.__trim_trailing_spaces_on_lines(doc)
         self.__trim_trailing_blank_lines(doc)
