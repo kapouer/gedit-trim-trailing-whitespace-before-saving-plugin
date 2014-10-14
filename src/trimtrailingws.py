@@ -79,17 +79,17 @@ class TrimTrailingWhitespaceBeforeSavingPlugin(GObject.Object, Gedit.ViewActivat
         debug_plugin_message("self = %r", self)
 
     def do_activate(self):
-        """Connect to the document's 'saving' and 'saved' signals."""
+        """Connect to the document's 'save' and 'saved' signals."""
         doc = self.view.get_buffer()
 
         if not hasattr(doc, "saving_handler_id"):
-            doc.saving_handler_id = doc.connect("saving", self.__on_document_saving)
+            doc.saving_handler_id = doc.connect("save", self.__on_document_saving)
 
         if not hasattr(doc, "saved_handler_id"):
             doc.saved_handler_id = doc.connect("saved", self.__on_document_saved)
 
     def do_deactivate(self):
-        """Disconnect from the document's 'saving' and 'saved' signals."""
+        """Disconnect from the document's 'save' and 'saved' signals."""
         doc = self.view.get_buffer()
 
         try:
