@@ -155,7 +155,7 @@ class TrimTrailingWhitespaceBeforeSavingPlugin(GObject.Object, Gedit.ViewActivat
         self.__trim_trailing_blank_lines(doc)
         doc.end_user_action()
 
-    def __on_document_saved(self, doc, err):
+    def __on_document_saved(self, doc):
         try:
             current_lineno = doc.current_lineno
         except AttributeError:
