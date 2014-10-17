@@ -213,6 +213,7 @@ class TrimTrailingWhitespaceBeforeSavingPlugin(GObject.Object, Gedit.ViewActivat
                 if not itr.ends_line():
                     itr.forward_to_line_end()
                     break
+            itr.forward_to_line_end()
             doc.delete(itr, buffer_end)
 
     def __trim_trailing_spaces_on_lines(self, doc):
